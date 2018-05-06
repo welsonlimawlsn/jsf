@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+    <title>Titulo</title>
+</h:head>
+<h:body>
+    <c:set var="numeroList" value="#{[1,2,3,4,5,6,7,8,9,10]}"/>
+    #{(soma -> soma + num)(10)}<br/>
+    #{((v1, v2, v3) -> v1 * v2 * v3)(1, 5, 10)}<br/>
+    #{(x -> x * x * x)(5)}<br/>
+    #{cubo = (x -> x * x * x); cubo(10)}
+    <h:form>
+        <h:commandButton value="Calcular cubo" actionListener="#{estudanteRegistrarBean.calcularCubo((x -> x * x * x), 10)}"/>
+    </h:form>
+    <!---->
+    <ui:repeat value="#{['Welson', 'é', 'bonito!']}" var="boniteza">
+        #{boniteza}
+    </ui:repeat><br/>
+
+    <ui:repeat value="#{{'Welson', 'é', 'bonito!', 'bonito!'}}" var="boniteza">
+        #{boniteza}
+    </ui:repeat><br/>
+
+    <ui:repeat value="#{{'nome':'welson', 'idade':'19', 'sexo':'masculino'}}" var="dadosMap">
+        <ui:repeat value="#{dadosMap.entrySet().toArray()}" var="entry">
+            #{entry.key} - #{entry.value}<br/>
+        </ui:repeat>
+    </ui:repeat>
+
+    <ui:repeat value="#{[1,2,3,4,5,6,7,8,9,10].stream().filter(v -> v > 5).toList()}" var="result">
+        #{result}<br/>
+    </ui:repeat>
+    <ui:repeat value="#{numeroList.stream().filter(v -> v > 5).toList()}" var="result">
+        #{result}<br/>
+    </ui:repeat>
+
+    #{numeroList.stream().average().get()}<br/>
+    #{numeroList.stream().sum()}<br/>
+    #{numeroList.stream().filter(v -> v > 5).sum()}<br/>
+</h:body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<f:metadata>
+    <f:viewParam name="nome" value="#{comunicacaoTesteTresBean.nome}"/>
+    <f:viewParam name="sobrenome" value="#{comunicacaoTesteTresBean.sobrenome}"/>
+    <f:viewParam name="data" value="#{comunicacaoTesteTresBean.data}">
+        <f:convertDateTime pattern="dd/MM/yyyy"/>
+    </f:viewParam>
+    <!--<f:event type="preRenderView" listener="#{comunicacaoTesteTresBean.init()}"/>-->
+    <f:viewAction action="${comunicacaoTesteTresBean.init()}"/>
+</f:metadata>
+<h:body>
+    <o:form includeRequestParams="true">
+        <p:messages autoUpdate="true"/>
+        <h:panelGrid columns="1">
+            <h:inputText value="#{comunicacaoTesteTresBean.nome}" required="true" requiredMessage="O nome é obrigatório">
+                <f:ajax event="blur"/>
+            </h:inputText>
+            <h:inputText value="#{comunicacaoTesteTresBean.sobrenome}" required="true" requiredMessage="O sobrenome é obrigatório"/>
+            <h:outputText value="#{comunicacaoTesteTresBean.data}">
+                <f:convertDateTime locale="pt_BR"/>
+            </h:outputText>
+            <h:commandButton value="Resultado" action="resultado?faces-redirect=true&amp;includeViewParams=true"/>
+        </h:panelGrid>
+    </o:form>
+</h:body>
+</html>

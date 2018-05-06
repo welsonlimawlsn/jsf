@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+
+</h:head>
+<h:body>
+    <h2>Primeira pagina de registro do FlowScoped</h2>
+    <h:messages/>
+    <h:form id="form">
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Nome: " id="nome"/>
+            <h:inputText name="nome" value="#{testeFlowBean.nome}" requiredMessage="O campo 'Nome' é obrigatório." required="true"/>
+
+            <h:outputLabel value="Sobrenome: " id="sobrenome"/>
+            <h:inputText name="sobrenome" value="#{testeFlowBean.sobrenome}"/>
+
+            <h:commandButton value="Next" action="registrationPage2"/>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>

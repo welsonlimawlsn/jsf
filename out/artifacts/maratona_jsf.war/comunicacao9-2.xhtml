@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<f:metadata>
+    <f:viewAction action="#{comunicacaoTesteNoveDoisBean.init()}"/>
+</f:metadata>
+<h:body>
+    <h:panelGrid columns="2">
+        <h:outputText value="Nome: "/>
+        <h:outputText value="#{comunicacaoTesteNoveDoisBean.estudante.nome}"/>
+
+        <h:outputText value="Sobrenome: "/>
+        <h:outputText value="#{comunicacaoTesteNoveDoisBean.estudante.sobrenome}"/>
+    </h:panelGrid>
+    <h:form>
+        <p:messages autoUpdate="true"/>
+        <h:inputText value="#{comunicacaoTesteNoveDoisBean.estudante2.nome}" converter="javax.faces.Number"/>//immediate no input tem comportamento diferente
+        <h:commandButton immediate="true" value="Voltar" action="comunicacao9?faces-redirect=true"/>
+    </h:form>
+</h:body>
+</html>
